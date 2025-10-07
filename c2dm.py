@@ -1,15 +1,20 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
+
 # Import the Firebase service
 import firebase_admin
 from firebase_admin import messaging
 
+# env
+# GOOGLE_CLOUD_PROJECT
+# GOOGLE_APPLICATION_CREDENTIALS
 default_app = firebase_admin.initialize_app()
 print(default_app.name)
 
 # This registration token comes from the client FCM SDKs.
-registration_token = 'e0Ooby2iRM6SdOcW00HICq:APA91bGM0LWfv9UXzdFVRt3OyCCmR-Z1_mY3A8Fi_iVUeoh05T62lFONwlaxOrquRiexvJi94EPe8Hns3VurImiTGyltiU5HgwfLvYTfSKFt9zmSan1bJwY'
+registration_token = os.environ['TOKEN']
 
 
 # See documentation on defining a message payload.
