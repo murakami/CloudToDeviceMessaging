@@ -7,25 +7,32 @@ import os
 import firebase_admin
 from firebase_admin import messaging
 
+from datetime import datetime
+
 # env
 # GOOGLE_CLOUD_PROJECT
 # GOOGLE_APPLICATION_CREDENTIALS
 default_app = firebase_admin.initialize_app()
 print(default_app.name)
 
+now = datetime.now()
+formatted_date = now.strftime('%Y-%m-%d %H:%M:%S')
+
 # This registration token comes from the client FCM SDKs.
 registration_token = os.environ['TOKEN']
-
+print(registration_token)
 
 # See documentation on defining a message payload.
 message = messaging.Message(
 	notification=messaging.Notification(
 		title='PTT',
-		body='message',
+		body=formatted_date,
 	),
 	data={
-		'score': '850',
-		'time': '2:45',
+		'voice_ping_router': 'wss://router-lite.voiceping.info',
+		'group_id': 'bitz',
+		'user_id': 'demo',
+		'message': formatted_date,
 	},
 	android=messaging.AndroidConfig(
 		priority='high',
