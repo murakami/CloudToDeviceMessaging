@@ -9,3 +9,9 @@ $ source .venv/bin/activate
 ```
 $ deactivate
 ```
+
+## パッケージ一括インストール
+```
+$ pip install -r requirements.txt
+```
+
