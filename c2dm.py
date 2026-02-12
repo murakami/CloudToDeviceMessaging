@@ -35,8 +35,12 @@ message = messaging.Message(
 		'message': formatted_date,
 	},
 	android=messaging.AndroidConfig(
-		channel_id='fcm_default_channel',
 		priority='high',
+		notification=messaging.AndroidNotification(
+			title='PTT for Android',
+			body=formatted_date,
+			channel_id='fcm_default_channel',
+		),
 	),
 	token=registration_token,
 )
