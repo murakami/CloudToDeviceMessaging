@@ -35,6 +35,7 @@ message = messaging.Message(
 		'message': formatted_date,
 	},
 	android=messaging.AndroidConfig(
+		channel_id='fcm_default_channel',
 		priority='high',
 	),
 	token=registration_token,
